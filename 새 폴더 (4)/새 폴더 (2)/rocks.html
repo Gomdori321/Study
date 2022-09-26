@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id = 'sci'>가위</button>
+    <button id = "rock">바위</button> 
+    <button id = 'paper'>보</button>
+    <h1 id = "result">aa</h1>
+    <script>
+        
+        let r = document.querySelector('#rock')
+        let s = document.querySelector('#sci')
+        let p = document.querySelector('#paper')
+       
+
+        let rand = Math.random()
+        let random = Math.floor(rand*3)
+
+        r.onclick = function() {
+            let player = 0
+            
+            result.textContent = '컴퓨터: ' + random
+        }
+        s.onclick = function() {
+            let player = 1
+            result.textContent = '가위'
+        }
+        p.onclick = function() {
+            let player = 2
+            result.textContent = '보자기'
+        }
+
+    
+    </script>
+</body>
+</html>

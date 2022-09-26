@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="randomcolor.js"></script>
+</head>
+
+<style>
+    h1 {
+        color: #24110b
+    }
+</style>
+
+<body>
+
+    <input type="text" id="asdf">
+    <button id="input">추가</button>
+
+    <script>
+        function nextRandomInteger(limit) {
+            return Math.round(Math.random() * limit)
+        }
+
+
+
+
+
+        let randomA1phabet = (
+            function () {
+                let alphabet = 'ABCDEFGHIJKLMNOPARSTUVWXYZ가나다라마바사아자차카타파하 ぁ ぃ ぅ ぇ ぉ か き く け こ'
+                return function () {
+                    return alphabet[nextRandomInteger(alphabet.length - 1)]
+                }
+            }
+        )()
+
+
+        function randomSpeed(maxSpeed) {
+            return Math.random() * maxSpeed - Math.random() * maxSpeed
+        }
+
+        let canvasWidth = 700
+        let canvasHeight = 500
+
+
+
+
+        function MovingText() {
+            this.x = nextRandomInteger(canvasWidth)
+            this.y = nextRandomInteger(canvasHeight)
+            this.vx = randomSpeed(10)
+            this.vy = randomSpeed(10)
+            this.text = document.createElement('h1')
+            this.text.innerText = randomA1phabet()
+            this.text.style.position = 'fixed'
+            setInterval(() => {
+                this.text.style.color = randomBrightColor()
+            }, 400)
+            document.body.appendChild(this.text)
+        }
+
+        MovingText.prototype.move = function () {
+            if (this.x < 0 || this.x > canvasWidth)
+                this.vx *= -1
+            if (this.y < 0 || this.y > canvasHeight)
+                this.vy *= -1
+            this.x += this.vx
+            this.y += this.vy
+            this.text.style.left = this.x + 'px'
+            this.text.style.top = this.y + 'px'
+        }
+
+
+        let movingTexts = []
+        for (let i = 0; i < 100; i++) {
+            movingTexts.push(new MovingText())
+        }
+
+        document.querySelector('input').onclick=() => {
+
+        movingTexts.push(document.querySelector('asdf').value)
+        
+        console.log(alphabet)
+        }
+
+
+        setInterval(function () {
+
+            for (let i in movingTexts)
+                movingTexts[i].move()
+
+        }, 1000 / 30)
+
+        setInterval(() => {
+
+            document.body.style.backgroundColor = randomBrightColor()
+        }, 400)
+
+
+        // document.querySelector('input').click = () => {
+
+        //     randomA1phabet.push(
+        //         document.querySelector('asdf').value)
+
+        // }
+
+
+        // setInterval(function () {
+        //     for (let i in movingTexts) {
+        //         movingTexts[i].move()
+        //     }
+        // }, 1000 / 30)
+
+    </script>
+</body>
+
+</html>

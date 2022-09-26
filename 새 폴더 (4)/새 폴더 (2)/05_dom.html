@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id = "title">Lorem, ipsum.</h1>
+    <img src="" alt="">
+    <h1>Lorem, ipsum.lorem</h1>
+    <img src="" alt="" id="abcd">
+    <script>
+        let title = document.querySelector('#title')
+        let img = document.getElementById('abcd')
+        title.style.color = 'blue'
+        img.src = 'https://product.cdn.cevaws.com/var/storage/images/_aliases/reference/media/feliway-2017/images/kor-kr/1_gnetb-7sfmbx49emluey4a/6341829-1-kor-KR/1_gNETb-7SfMBX49EMLUeY4A.jpg'
+        let h1 = document.querySelectorAll('h1')
+        let images = document.getElementsByTagName('img')
+        for(let item of h1)
+            item.style.background='springgreen'
+            images[0].src = 'http://www.chemicalnews.co.kr/news/photo/202106/3636_10174_4958.jpg'
+
+
+        let name = prompt('이름이 뭐에요?')
+        h1[1].textContent = name
+</script>
+</body>
+</html>

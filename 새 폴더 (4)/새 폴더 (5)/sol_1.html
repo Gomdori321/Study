@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .circle {
+            width: calc(1em / 0.71);
+            height: calc(1em / 0.71);
+            border-radius: 50%;
+
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
+            font-size: 3em;
+            color: rgb(56, 150, 128);
+            border: 3px solid rgb(56, 150, 128);
+            display: inline-block;
+        }
+
+        #bonus_num {
+            width: calc(1em / 0.71);
+            height: calc(1em / 0.71);
+            border-radius: 50%;
+
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
+            font-size: 3em;
+            color: rgb(113, 224, 79);
+            border: 3px solid rgb(185, 224, 77);
+            display: inline-block;
+        }
+
+        #wrapper {
+            display: flex;
+            justify-content: center;
+
+            margin: 0 auto;
+            padding: 30px;
+            max-width: 1170px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+
+    <button id="lotto">로또번호 출력</button>
+    <br><br>
+    <div class="wrapper">
+        <div class="circle" id="num1"></div>
+        <div class="circle" id="num2"></div>
+        <div class="circle" id="num3"></div>
+        <div class="circle" id="num4"></div>
+        <div class="circle" id="num5"></div>
+        <div class="circle" id="num6"></div>
+        <div class="circle" id="bonus_num"></div>
+    </div>
+    <h1 id="lottonum"></h1>
+    <h1 id="bonus"></h1>
+    <script>
+        
+
+
+
+
+        let draw=() => {
+            let Lotto = []
+            for (let i = 0; i < 6; i++) {
+                Lotto[i] = Math.floor(Math.random() * 45 + 1)
+                for (let j = 0; j < i; j++) {
+                    if (Lotto[j] == Lotto[i])
+                        i--
+                }
+            }
+
+            for (let i = 0; i < 6; i++) {
+                for (let j = 1; j < 6 - i; j++) {
+                    if (Lotto[j] < Lotto[j - 1]) {
+                        let temp = Lotto[j]
+                        Lotto[j] = Lotto[j - 1]
+                        Lotto[j - 1] = temp
+                    }
+                }
+            }
+
+            let bonusnum
+            for (let i = 0; i < 1; i++) {
+                bonusnum = Math.floor(Math.random() * 45+1)
+                for (let j = 0; j < 6; j++) {
+                    if (bonusnum == Lotto[j])
+                        i--
+                }
+            }
+            console.log(Lotto)
+            for(let i = 0; i < 6; i++)
+            {
+                document.querySelector('#num'+ (i+1)).textContent = Lotto[i]
+            }
+            document.querySelector('#bonus_num').textContent = bonusnum
+
+
+        }
+        document.querySelector('#lotto').onclick =() => draw()
+        
+    
+
+
+    </script>
+</body>
+
+</html>
