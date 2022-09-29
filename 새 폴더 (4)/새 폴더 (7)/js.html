@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jq.js"></script>
+    <script>
+      
+        $(
+            function(){
+                let n = prompt("주사위 시도 횟수")
+                let dice = [0,0,0,0,0,0,0]
+                for(let i = 0; i < n;i++){
+                    
+                    let dicenum = Math.floor(Math.random()*6+1)
+                    dice[dicenum]++
+                }
+
+
+                for(let i = 1; i < 7;i++){
+                document.querySelector('h1.a'+i).textContent = dice[i]
+                document.querySelector('h2.a'+i).textContent = dice[i]/n*100+'%'
+                //$('h1.a'+i).text(dice[i])
+                //$('h2.a'+i).text(dice[i]/n*100+'%')
+            }
+
+            a = dice.indexOf(Math.max.apply(null,dice))
+
+            document.querySelector('h1.a'+a).style.color = 'pink'
+            document.querySelector('h2.a'+a).style.color = 'pink'
+            //$('h1.a'+a).css('color','pink')
+            //$('h2.a'+a).css('color','pink')
+
+    }
+    )
+
+
+    </script>
+</head>
+<body>
+    <h1>1</h1>
+    <h1 class = 'a1'>0</h1>
+    <h2 class = 'a1'>0</h2>
+    <h1>2</h1>
+    <h1 class = 'a2'>0</h1>
+    <h2 class = 'a2'>0</h2>
+    <h1>3</h1>
+    <h1 class = 'a3'>0</h1>
+    <h2 class = 'a3'>0</h2>
+    <h1>4</h1>
+    <h1 class = 'a4'>0</h1>
+    <h2 class = 'a4'>0</h2>
+    <h1>5</h1>
+    <h1 class = 'a5'>0</h1>
+    <h2 class = 'a5'>0</h2>
+    <h1>6</h1>
+    <h1 class = 'a6'>0</h1>
+    <h2 class = 'a6'>0</h2>
+
+</body>
+</html>
